@@ -33,7 +33,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
   
-      const { productname, producttype, productline, devicetype, devicebrand, package, upc, innercarton, mastercarton, modelsku, status } = req.body;
+      const { productname, producttype, productline, devicetype, devicebrand, pkgid, upc, innercarton, mastercarton, modelsku, status } = req.body;
   
       try {
         const newProduct = new Product({
@@ -42,7 +42,7 @@ router.post(
           productline,
           devicetype,
           devicebrand,
-          package,
+          pkgid,
           upc,
           innercarton,
           mastercarton,
@@ -66,7 +66,7 @@ router.post(
 // @desc      Update product
 // @access    Private
 router.put('/:id', auth, async (req, res) => {
-    const { productname, producttype, productline, devicetype, devicebrand, package, upc, innercarton, mastercarton, modelsku, status } = req.body;
+    const { productname, producttype, productline, devicetype, devicebrand, pkgid, upc, innercarton, mastercarton, modelsku, status } = req.body;
   
     // Build product object
     const productFields = {};
@@ -75,7 +75,7 @@ router.put('/:id', auth, async (req, res) => {
     if (productline) productFields.productline = productline;
     if (devicetype) productFields.devicetype = devicetype;
     if (devicebrand) productFields.devicebrand = devicebrand;
-    if (package) productFields.package = package;
+    if (pkgid) productFields.pkgid = pkgid;
     if (upc) productFields.upc = upc;
     if (innercarton) productFields.innercarton = innercarton;
     if (mastercarton) productFields.mastercarton = mastercarton;

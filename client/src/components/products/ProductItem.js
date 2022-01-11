@@ -11,7 +11,7 @@ const ProductItem = ({ product }) => {
   // we just need the product dispatch without state.
   const productDispatch = useProducts()[1];
 
-  const { _id, productname, producttype, packgtype, productline, devicetype, devicebrand, upc, innercarton, mastercarton, modelsku, status } = product;
+  const { _id, productname, producttype, packgtype, productline, devicetype, devicebrand, upc, innercarton, mastercarton, modelsku, pkgid, status } = product;
 
   const onDelete = () => {
     deleteProduct(productDispatch, _id);
@@ -74,10 +74,15 @@ const ProductItem = ({ product }) => {
             Master carton: {mastercarton}
           </li>
         )}
-
-         {modelsku && (
+        {modelsku && (
           <li>
             SKU: {modelsku}
+          </li>
+        )}
+
+         {pkgid && (
+          <li>
+            PackageID: {pkgid}
           </li>
         )}
       </ul>

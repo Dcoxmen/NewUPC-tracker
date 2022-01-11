@@ -17,6 +17,7 @@ const initialProduct = {
   mastercarton: '',
   deliveryid: '',
   modelsku: '',
+  pkgid: '',
   status: '',
   type: 'active'
 };
@@ -36,7 +37,7 @@ const ProductForm = () => {
     }
   }, [current]);
 
-  const { productname, producttype, packgtype, productline, devicetype, devicebrand, upc, innercarton, mastercarton, modelsku, status  } = product;
+  const { productname, producttype, productline, devicetype, devicebrand, upc, innercarton, mastercarton, modelsku, pkgid, status  } = product;
 
   const onChange = (e) =>
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -74,13 +75,6 @@ const ProductForm = () => {
         placeholder='Product Type'
         name='producttype'
         value={producttype}
-        onChange={onChange}
-      />
-      <input
-        type='text'
-        placeholder='Package Type'
-        name='packgtype'
-        value={packgtype || ''}
         onChange={onChange}
       />
       <input
@@ -132,6 +126,13 @@ const ProductForm = () => {
         value={modelsku}
         onChange={onChange}
       />
+      <input
+        type='text'
+        placeholder='Package Number'
+        name='pkgid'
+        value={pkgid}
+        onChange={onChange}
+      />
       <h5>Product Status</h5>
       <input
         type='radio'
@@ -141,6 +142,14 @@ const ProductForm = () => {
         onChange={onChange}
       />{' '}
       Active{' '}
+      <input
+        type='radio'
+        name='status'
+        value='eol'
+        checked={status === 'eol'}
+        onChange={onChange}
+      />{' '}
+      EOL
       <input
         type='radio'
         name='status'

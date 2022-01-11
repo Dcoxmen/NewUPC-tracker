@@ -33,8 +33,10 @@ const ProductSchema = mongoose.Schema({
   mastercarton: {
     type: String
   },
-
   modelsku: {
+    type: String
+  },
+  pkgid: {
     type: String
   },
   status: {

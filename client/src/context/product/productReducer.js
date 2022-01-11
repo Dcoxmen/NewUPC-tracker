@@ -58,8 +58,8 @@ import {
       case FILTER_PRODUCTS:
         return {
           ...state,
-          filtered: state.products.filter(({ productname, modelsku }) => {
-            const testString = `${productname}${modelsku}`.toLowerCase();
+          filtered: state.products.filter(({ productname, devicetype, modelsku }) => {
+            const testString = `${productname}${devicetype}${modelsku}`.toLowerCase();
             return testString.includes(action.payload.toLowerCase());
           })
         };
